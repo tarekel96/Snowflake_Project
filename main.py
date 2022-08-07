@@ -1,18 +1,10 @@
-import os
-from dotenv import load_dotenv
-from snowflake.connector import connect
+from models.db_model import db_model
+from queries.weather_queries import WEATHER_QUERIES as queries
 
-load_dotenv()
+def main():
+    db = db_model()
+    db.run_sql(queries['USE_DB'], print_results=True)
+    
 
-username = os.environ.get('SNOWFLAKE_USERNAME')
-password = os.environ.get('SNOWFLAKE_PASSWORD')
-account = os.environ.get('SNOWFLAKE_ACCOUNT')
-
-
-con = connect(
-    user=username,
-    password=password,
-    account=account
-)
-
-print(con)
+if __name__ == '__main__':
+    main()
