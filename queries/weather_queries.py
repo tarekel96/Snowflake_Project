@@ -11,5 +11,12 @@ WEATHER_QUERIES = {
                         standard_tile.forecast_day
                 WHERE
                         COUNTRY = 'US';
+                ''',
+        'DATA_BY_POSTAL':'''
+                SELECT DISTINCT 
+                        POSTAL_CODE, AVG_TEMPERATURE_AIR_2M_F, AVG_HUMIDITY_RELATIVE_2M_PCT, AVG_PRESSURE_2M_MB, 
+                        AVG_WIND_SPEED_10M_MPH, PROBABILITY_OF_PRECIPITATION_PCT, PROBABILITY_OF_SNOW_PCT
+                FROM standard_tile.forecast_day
+                WHERE COUNTRY = 'US';
                 '''
 }
